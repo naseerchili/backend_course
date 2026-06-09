@@ -6,7 +6,7 @@ import bcrypt from "bcrypt"
 
 const userSchema = new Schema({
     username: {
-        type: Sring,
+        type: String,
         required: true,
         unique: true,
         lowercase: true,
@@ -14,7 +14,7 @@ const userSchema = new Schema({
         index: true
     },
     email: {
-        type: Sring,
+        type: String,
         required: true,
         unique: true,
         lowercase: true,
@@ -26,7 +26,7 @@ const userSchema = new Schema({
         trim: true,
         index: true
     },
-    avator: {
+    avatar: {
         type: String,
         required: true,
     },
@@ -35,7 +35,7 @@ const userSchema = new Schema({
     },
     watchHistory: [
         {
-            type: Scheema.Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "Video"
         }
     ],
@@ -72,5 +72,5 @@ userSchema.methods.generateRefreshToken = function () {
         _id: this._id
     }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: process.env.REFRESH_TOKEN_EXPIRY })
 }
-export const User = mongoose.model.model("User", userSchema)
+export const User = mongoose.model("User", userSchema)
 
